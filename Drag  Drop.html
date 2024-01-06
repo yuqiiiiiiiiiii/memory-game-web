@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width",initial-scale=1.0>
+    <title>記憶小遊戲程式講解</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+
+<div class="container"> 
+    <div id="box">
+        <h1>box</h1>
+        <div class="list" draggable="true">🍔</div>
+        <div class="list" draggable="true">🍔</div>
+        <div class="list" draggable="true">🎀</div>
+        <div class="list" draggable="true">🎀</div>
+    </div>
+    <div id="boxopen">
+        <h1>openbox</h1>
+    </div>
+    <div id="boxmatch">
+        <h1>matchbox</h1>
+    </div>
+</div>
+
+<script>
+
+let lists=document.getElementsByClassName("list");
+let matchbox = document.getElementById("boxmatch")    
+let openbox = document.getElementById("boxopen")   
+
+for(list of lists){
+    list.addEventListener("dragstart",function(e){
+        let selected = e.target;
+
+        matchbox.addEventListener("dragover",function(e){
+            e.preventDefault();
+        })
+        matchbox.addEventListener("drop",function(e){
+           matchbox.appendChild(selected);
+           selected=null;
+        });
+        openbox.addEventListener("dragover",function(e){
+            e.preventDefault();
+        })
+        openbox.addEventListener("drop",function(e){
+           openbox.appendChild(selected);
+           selected=null;
+        });
+        box.addEventListener("dragover",function(e){
+            e.preventDefault();
+        })
+        box.addEventListener("drop",function(e){
+           box.appendChild(selected);
+           selected=null;
+        });
+
+    })
+}
+</script>
+
+</body>
+</html>
